@@ -182,7 +182,10 @@ function Update () {
 
 function getDirection(){
 	var direction : int;
+
 	var angle : float = Quaternion.Angle(Quaternion.Euler(new Vector3(0,0,0)),transform.rotation);
+
+	 
 	if (0.0 <= angle && angle < 45.0) {
 		direction = 2;
 	}

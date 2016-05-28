@@ -34,23 +34,36 @@ public class BluetoothReceiver : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		btn1 = jo.Call<bool> ("button1Pressed");
-		btn2 = jo.Call<bool> ("button2Pressed");
-		btn3 = jo.Call<bool> ("button3Pressed");
-		btn4 = jo.Call<bool> ("button4Pressed");
-		buttonJoystick = jo.Call<bool> ("buttonJoystickPressed");
+		if (jo != null) {
+			btn1 = jo.Call<bool> ("button1Pressed");
+			btn2 = jo.Call<bool> ("button2Pressed");
+			btn3 = jo.Call<bool> ("button3Pressed");
+			btn4 = jo.Call<bool> ("button4Pressed");
+			buttonJoystick = jo.Call<bool> ("buttonJoystickPressed");
 
-		xAxis = Mathf.Abs(1024-jo.Call<int>("getXJoystick"));
-		yAxis = jo.Call<int>("getYJoystick");
+			xAxis = Mathf.Abs (1024 - jo.Call<int> ("getXJoystick"));
+			yAxis = jo.Call<int> ("getYJoystick");
+		}
+
+	}
+
+	public bool isAndroidActive(){
+		return jo != null;
 	}
 
 	public void viber(){
-		jo.Call ("viber");
+		if (isAndroidActive ())
+			jo.Call ("viber");
+		else
+			Debug.Log ("VIBER! (Android not active");
 	}
 
 	public void viber(float time){
-		viber();
-		ExecuteAfterTime (time);
+		if (isAndroidActive ()) {
+			viber ();
+			ExecuteAfterTime (time);
+		}else
+			Debug.Log ("VIBER! (Android not active");
 	}
 
 	IEnumerator ExecuteAfterTime(float time){
@@ -59,37 +72,60 @@ public class BluetoothReceiver : MonoBehaviour {
 	}
 	
 	public bool getBtn1Pressed(){
-		return btn1;
+		if (isAndroidActive ())
+			return btn1;
+		else
+			return Input.GetButton ("Fire1");
 	}
 
 	public bool getBtn2Pressed(){
-		return btn2;
+		if (isAndroidActive ())
+			return btn2;
+		else
+			return Input.GetButton ("Fire2");
 	}
 
 	public bool getBtn3Pressed(){
-		return btn3;
+		if (isAndroidActive ())
+			return btn3;
+		else
+			return Input.GetButton ("Fire3");
 	}
 
 	public bool getBtn4Pressed(){
-		return btn4;
+		if (isAndroidActive ())
+			return btn4;
+		else
+			return Input.GetButton ("Fire4");
 	}
 
 	public bool getButtonJoystickPressed(){
-		return buttonJoystick;
+		if (isAndroidActive ())
+			return buttonJoystick;
+		else
+			return Input.GetButton ("Fire5");
 	}
 
 	public int getXAxis(){
-		int aux = xAxis - 512;
-		if (Mathf.Abs (aux) < minToMove)
-			return 0;
-		return aux;
+		if (isAndroidActive ()) {
+			int aux = xAxis - 512;
+			if (Mathf.Abs (aux) < minToMove)
+				return 0;
+			return aux;
+		} else {
+			return (int)Input.GetAxis ("horizontal");
+		}
 	}
 
 	public int getYAxis(){
-		int aux = yAxis - 512;
-		if (Mathf.Abs (aux) < minToMove)
-			return 0;
-		return aux;
+		if (isAndroidActive ()) {
+			int aux = yAxis - 512;
+			if (Mathf.Abs (aux) < minToMove)
+				return 0;
+			return aux;
+		} else {
+			return (int)Input.GetAxis ("vertical");
+		}
 	}
 		
 }

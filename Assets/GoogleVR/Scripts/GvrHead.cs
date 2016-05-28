@@ -64,6 +64,7 @@ public class GvrHead : MonoBehaviour {
   /// during `Update()` by setting this to true.
   public bool updateEarly = false;
 
+
   /// Returns a ray based on the heads position and forward direction, after making
   /// sure the transform is up to date.  Use to raycast into the scene to determine
   /// objects that the user is looking at.
@@ -84,6 +85,13 @@ public class GvrHead : MonoBehaviour {
   }
 
   private bool updated;
+	private Vector3 offsetPosition;
+	private Quaternion offsetRotation;
+
+	void Start(){
+		offsetPosition = transform.localPosition;
+		offsetRotation = transform.localRotation;
+	}
 
   void Update() {
     updated = false;  // OK to recompute head pose.
@@ -110,7 +118,7 @@ public class GvrHead : MonoBehaviour {
       if (target == null) {
         transform.localRotation = rot;
       } else {
-        transform.rotation = target.rotation * rot;
+			transform.rotation = target.rotation * rot * offsetRotation;
       }
     }
 
@@ -119,7 +127,7 @@ public class GvrHead : MonoBehaviour {
       if (target == null) {
         transform.localPosition = pos;
       } else {
-        transform.position = target.position + target.rotation * pos;
+				transform.position = target.position + target.rotation * pos + offsetPosition;
       }
     }
 
