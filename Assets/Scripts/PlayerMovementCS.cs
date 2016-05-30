@@ -9,6 +9,8 @@ public class PlayerMovementCS : MonoBehaviour{
 	public static int N;
 	public static bool doorsOpen;
 
+	public float incVelocity=6f;
+
 	public float speed = 6f;
 	public float RotateSpeed = 300f;
 
@@ -29,24 +31,33 @@ public class PlayerMovementCS : MonoBehaviour{
 	}
 
 	void FixedUpdate(){
-		float h = Input.GetAxisRaw ("Horizontal");
-		float v = Input.GetAxisRaw ("Vertical");
+		float v = BluetoothReceiver.getInstance().getYAxis();
 	
-		Move (h, v);
-		Animating (h, v);
+		Move (0f,v);
+		Animating (0f, v);
 	}
 
 	void Move(float h,float v){
-		/*movement.Set (h, 0f, v);
-		movement = movement.normalized * speed * Time.deltaTime;*/
-		Vector3 forward = head.transform.forward;
-		Vector3 movement = new Vector3 (forward.x, 0f, forward.z);
-		movement = movement.normalized * speed * Time.deltaTime;
-		Debug.Log("pre transform: "+transform.position);
-		playerRigidbody.MovePosition (movement);
+		if (v != 0) {
+			Vector3 forward = head.transform.forward;
+			Vector3 movement = new Vector3 (forward.x, 0f, forward.z);
 
 
-		playerRigidbody.MovePosition (transform.position + movement);
+			float realSpeed = speed;
+			if (v < 0f) {
+				movement *= -1;
+			}
+
+			Debug.Log (BluetoothReceiver.getInstance ().getBtn1Pressed ());
+			if (BluetoothReceiver.getInstance ().getBtn1Pressed ()) {
+				realSpeed += incVelocity;
+			}
+			
+			movement = movement.normalized * realSpeed * Time.deltaTime;
+			playerRigidbody.MovePosition (movement);
+
+			playerRigidbody.MovePosition (transform.position + movement);
+		}
 	}
 
 	void Animating(float h, float v){

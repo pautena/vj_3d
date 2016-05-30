@@ -113,7 +113,7 @@ public class BluetoothReceiver : MonoBehaviour {
 				return 0;
 			return aux;
 		} else {
-			return (int)Input.GetAxis ("horizontal");
+			return (int)Input.GetAxis ("Horizontal");
 		}
 	}
 
@@ -124,7 +124,7 @@ public class BluetoothReceiver : MonoBehaviour {
 				return 0;
 			return aux;
 		} else {
-			return (int)Input.GetAxis ("vertical");
+			return (int)Input.GetAxis ("Vertical");
 		}
 	}
 		
