@@ -29,7 +29,7 @@ public class PlayerMovementCS : MonoBehaviour{
 	private float angle=0f;
 	private float runCounter;
 	private bool run=false;
-
+	public bool canMove=true;
 
 	void Awake(){
 		floorMask = LayerMask.GetMask ("Floor");
@@ -47,7 +47,7 @@ public class PlayerMovementCS : MonoBehaviour{
 	}
 
 	void Move(float h,float v){
-		if (v != 0 || h!=0) {
+		if (canMove && (v != 0 || h!=0)) {
 			Vector3 forward = head.transform.forward;
 			Vector3 movement = Quaternion.AngleAxis(head.eulerAngles.y,Vector3.up) * new Vector3 (h,0f,v);
 
@@ -66,7 +66,6 @@ public class PlayerMovementCS : MonoBehaviour{
 
 			playerRigidbody.MovePosition (transform.position + movement);
 		}
-
 		//Update run status
 		if (!run && runCounter < runTime) 
 			runCounter += Time.deltaTime;

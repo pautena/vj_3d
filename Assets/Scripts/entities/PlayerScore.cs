@@ -25,4 +25,8 @@ public class PlayerScore : MonoBehaviour {
 	public void DecScore(int dec){
 		score += dec;
 	}
+
+	public int GetScore(){
+		return score;
+	}
 }

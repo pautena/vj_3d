@@ -15,7 +15,7 @@ public class CanvasMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 		Vector3 targetPos = head.position + offsetPosition;
 		Vector3 angles = new Vector3(transform.eulerAngles.x, head.eulerAngles.y, transform.eulerAngles.z);
 

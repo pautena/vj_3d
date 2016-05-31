@@ -17,7 +17,7 @@ public class CameraCardboardFollow : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		//Move camera
 		Vector3 targetCamPos = target.position + offsetCamera;
 		Vector3 angles = new Vector3(x, target.eulerAngles.y, z);
