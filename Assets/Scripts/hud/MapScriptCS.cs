@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MapScriptCS : MonoBehaviour {
 
+	public mazeGenCS gen;
+	public int N_mini=2;
+	public MiniMapCameraCS miniMapCamera;
 	public GameObject elementsHUD;
 	private bool pause = false;
 	private Image background;
@@ -24,7 +27,9 @@ public class MapScriptCS : MonoBehaviour {
 
 			if (pause) {
 				Time.timeScale = 0;
+				miniMapCamera.ToggleGeneralVision (gen.N);
 			} else {
+				miniMapCamera.ToggleGeneralVision (N_mini);
 				Time.timeScale = 1;
 
 			}

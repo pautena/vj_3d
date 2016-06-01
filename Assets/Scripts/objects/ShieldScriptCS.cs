@@ -18,7 +18,6 @@ public class ShieldScriptCS : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col){
-		Debug.Log ("OnTriggerEnter: " + col.tag);
 		if (col.tag == "Player") {
 			PlayerHealth playerHealth = col.gameObject.GetComponent<PlayerHealth> ();
 			if (playerHealth.CanPickShield ()) {
