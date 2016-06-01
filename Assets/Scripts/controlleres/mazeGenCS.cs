@@ -33,6 +33,8 @@ public class mazeGenCS : MonoBehaviour {
 	private bool[,] west;
 	private bool[,] visited;
 
+	private GameObject[,] balls;
+
 
 	private int[,] directionsToPart;
 	private int[,] partsUsed;
@@ -75,6 +77,7 @@ public class mazeGenCS : MonoBehaviour {
 
 	void init() {
 		// initialize border cells as already visited
+		balls = new GameObject[N+2,N+2];
 		visited = new bool[N+2,N+2];
 		for (int x = 0; x < N+2; x++) {
 			visited[x,0] = true;
@@ -219,7 +222,7 @@ public class mazeGenCS : MonoBehaviour {
 		GameObject cloneObject = getPartFromValue (directionsToPart [pos, 0], rotation, x, z);
 		GameObject.Instantiate(cloneObject,position,Quaternion.Euler(0, rotation, 0));
 		if (x != 1 || z != 1) {
-			GameObject.Instantiate(ball, position, Quaternion.Euler(0, 0, 0));
+			balls [x, z] =(GameObject)GameObject.Instantiate(ball, position, Quaternion.Euler(0, 0, 0));
 			int r;
 			if (nTraps > 0 && !checkIfPosIsRoom(x,z)) {
 				r = Random.Range(0,100);
@@ -251,6 +254,7 @@ public class mazeGenCS : MonoBehaviour {
 			if (!instantiatedKey){
 				r = Random.Range(0,((N*N)-rooms)-visitedRooms);
 				if (r == 0){
+					Destroy (balls [x, z]);
 					GameObject.Instantiate(key, position, Quaternion.Euler(0, 0, 0));
 					instantiatedKey = true;
 					return;
@@ -260,6 +264,7 @@ public class mazeGenCS : MonoBehaviour {
 			if (nShields > 0){
 				r = Random.Range(0,100);
 				if (r < probabilityToShield){
+					Destroy (balls [x, z]);
 					GameObject.Instantiate(shield, position, Quaternion.Euler(0, 0, 0));
 					nShields--;
 					return;
@@ -276,6 +281,7 @@ public class mazeGenCS : MonoBehaviour {
 			}
 		}
 		else {
+			Destroy (balls [x, z]);
 			GameObject.Instantiate(heart, position, Quaternion.Euler(0, 0, 0));
 		}
 	}

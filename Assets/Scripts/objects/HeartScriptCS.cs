@@ -29,7 +29,7 @@ public class HeartScriptCS : MonoBehaviour {
 				renderers [i].enabled = false;
 			}
 			Destroy (gameObject,audioSource.clip.length);
-			Destroy (heartTexture);
+			DestroyImmediate (heartTexture);
 		}
 	}
 }
