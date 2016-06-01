@@ -91,7 +91,7 @@ public class BluetoothReceiver : MonoBehaviour {
 
 	public void viber(float time){
 		if (isAndroidActive ()) {
-			viber ();
+			jo.Call ("viber");
 			StartCoroutine(ExecuteAfterTime (time));
 		}else
 			Debug.Log ("VIBER! (Android not active");

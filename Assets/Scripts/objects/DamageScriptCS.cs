@@ -8,4 +8,9 @@ public class DamageScriptCS : PlayerCollisionScriptCS {
 	public override void OnPlayerCollision(){
 		player.GetComponent<PlayerHealth>().TakeDamage (damage);
 	}
+
+	public void OnTriggerEnter(Collider col){
+		base.OnTriggerEnter (col);
+		isPicked = false;
+	}
 }
