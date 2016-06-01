@@ -30,12 +30,16 @@ public class PlayerMovementCS : MonoBehaviour{
 	private float runCounter;
 	private bool run=false;
 	public bool canMove=true;
+	private PlayerAudio playerAudio;
+
+
 
 	void Awake(){
 		floorMask = LayerMask.GetMask ("Floor");
 		anim = GetComponent<Animator> ();
 		playerRigidbody = GetComponent<Rigidbody> ();
 		runCounter = runTime;
+		playerAudio = GetComponent<PlayerAudio> ();
 	}
 
 	void FixedUpdate(){
@@ -47,9 +51,11 @@ public class PlayerMovementCS : MonoBehaviour{
 	}
 
 	void Move(float h,float v){
-		if (canMove && (v != 0 || h!=0)) {
+		if (canMove && (v != 0 || h != 0)) {
+			playerAudio.PlayWalk ();
+			
 			Vector3 forward = head.transform.forward;
-			Vector3 movement = Quaternion.AngleAxis(head.eulerAngles.y,Vector3.up) * new Vector3 (h,0f,v);
+			Vector3 movement = Quaternion.AngleAxis (head.eulerAngles.y, Vector3.up) * new Vector3 (h, 0f, v);
 
 			float realSpeed = speed;
 
@@ -58,14 +64,18 @@ public class PlayerMovementCS : MonoBehaviour{
 				runCounter -= Time.deltaTime * runDecreaseVelocity;
 				realSpeed += incVelocity;
 				run = true;
-			} else
+				playerAudio.Run ();
+			} else {
 				run = false;
+				playerAudio.Walk ();
+			}
 
 			movement = movement.normalized * realSpeed * Time.deltaTime;
 			playerRigidbody.MovePosition (movement);
 
 			playerRigidbody.MovePosition (transform.position + movement);
-		}
+		} else
+			playerAudio.StopWalk ();
 		//Update run status
 		if (!run && runCounter < runTime) 
 			runCounter += Time.deltaTime;

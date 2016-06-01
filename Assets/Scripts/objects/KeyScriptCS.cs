@@ -7,9 +7,11 @@ public class KeyScriptCS : MonoBehaviour {
 	public GameObject keySprite;
 	public float speedRotation = 200f;
 
+	private AudioSource audioSource;
+
 	// Use this for initialization
 	void Start () {
-	
+		audioSource = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -20,7 +22,14 @@ public class KeyScriptCS : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 		if (col.tag == "Player") {
 			Debug.Log ("player");
-			Destroy(gameObject);
+			audioSource.Play ();
+
+			Renderer[] childs = GetComponentsInChildren<Renderer> ();
+			for (int i = 0; i < childs.Length; ++i) {
+				childs [i].enabled = false;
+			}
+
+			Destroy(gameObject,audioSource.clip.length);
 			Destroy(keySprite);
 
 			GameObject[] doors = GameObject.FindGameObjectsWithTag ("Door");

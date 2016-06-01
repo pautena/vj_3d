@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour {
 	public float shieldDuration=5f;
 	public GameObject shieldProgress;
 
+
 	private bool damaged=false;
 	private float poisonAlpha = 0f;
 	private bool poisonInvoke=false;
@@ -32,6 +33,7 @@ public class PlayerHealth : MonoBehaviour {
 	private PlayerScore playerScore;
 	private int haveShield;
 	private float shieldTime=0f;
+	private PlayerAudio playerAudio;
 
 
 	private float live;
@@ -43,6 +45,7 @@ public class PlayerHealth : MonoBehaviour {
 		playerRigidbody = GetComponent<Rigidbody> ();
 		playerMovement = GetComponent<PlayerMovementCS> ();
 		playerScore = GetComponent<PlayerScore> ();
+		playerAudio = GetComponent<PlayerAudio> ();
 		haveShield = 0;
 	}
 	
@@ -107,16 +110,22 @@ public class PlayerHealth : MonoBehaviour {
 
 			if (live <= 0f) {
 				Die ();
-			} else if (animate) {
-				playerMovement.canMove = false;
-				backTimeCount = backTime;
+			} else{
+				playerAudio.PlayHurtSound ();
+
+				if (animate) {
+					backTimeCount = backTime;
+					playerMovement.canMove = false;
+				}
 			}
 			BluetoothReceiver.getInstance ().viber (vt);
+
 		}
 	}
 
 	private void Die(){
 		playerMovement.canMove = false;
+		playerAudio.Die ();
 		gameOverManager.GameOver (playerScore.GetScore());
 	}
 

@@ -6,9 +6,11 @@ public class HeartScriptCS : MonoBehaviour {
 	public GameObject heartTexture;
 	public float healthValue=20f;
 
+	private AudioSource audioSource;
+
 	// Use this for initialization
 	void Start () {
-	
+		audioSource = GetComponent<AudioSource> ();	
 	}
 	
 	// Update is called once per frame
@@ -19,7 +21,14 @@ public class HeartScriptCS : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 		if (col.tag == "Player") {
 			col.gameObject.GetComponent<PlayerHealth> ().RestoreHealth (healthValue);
-			Destroy (gameObject);
+
+
+			audioSource.Play ();
+			Renderer[] renderers = GetComponentsInChildren<Renderer> ();
+			for (int i = 0; i < renderers.Length; ++i) {
+				renderers [i].enabled = false;
+			}
+			Destroy (gameObject,audioSource.clip.length);
 			Destroy (heartTexture);
 		}
 	}
