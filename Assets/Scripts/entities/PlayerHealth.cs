@@ -20,6 +20,8 @@ public class PlayerHealth : MonoBehaviour {
 	public Vector3 backDamageMovement = new Vector3(1.0f,0f,0f);
 	public Transform head;
 	public GameOverManager gameOverManager;
+	public float shieldDuration=5f;
+	public GameObject shieldProgress;
 
 	private bool damaged=false;
 	private float poisonAlpha = 0f;
@@ -28,6 +30,8 @@ public class PlayerHealth : MonoBehaviour {
 	private float backTimeCount=0f;
 	private PlayerMovementCS playerMovement;
 	private PlayerScore playerScore;
+	private int haveShield;
+	private float shieldTime=0f;
 
 
 	private float live;
@@ -39,10 +43,24 @@ public class PlayerHealth : MonoBehaviour {
 		playerRigidbody = GetComponent<Rigidbody> ();
 		playerMovement = GetComponent<PlayerMovementCS> ();
 		playerScore = GetComponent<PlayerScore> ();
+		haveShield = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (HaveShield() && BluetoothReceiver.getInstance ().getBtn2Pressed ()) {
+			UseShield ();
+		}
+
+		if (shieldTime > 0) {
+			shieldTime -= Time.deltaTime;
+			shieldProgress.SendMessage("SetFillerSize",shieldTime/shieldDuration);
+			if (shieldTime <= 0) {
+				RemoveShield ();
+				GameObject.Find("ShieldImage").GetComponent<Image>().color = new Color(0f,0f,0f,0f);
+			}
+		}
 
 		if(damaged){
 			damageImage.color = flashColour;
@@ -72,27 +90,29 @@ public class PlayerHealth : MonoBehaviour {
 		}
 	}
 
+	public void RestoreHealth(float health){
+		live += health;
+		healthSlider.value = live/initialLive;
+	}
+
 	public void TakeDamage(float damage){
 		TakeDamage (damage, viberTime,true);
 	}
 
 	public void TakeDamage(float damage,float vt,bool animate){
-		damaged=true;
-		live -= damage;
-		healthSlider.value = live/initialLive;
+		if (shieldTime <= 0) {
+			damaged = true;
+			live -= damage;
+			healthSlider.value = live / initialLive;
 
-		if (live <= 0f) {
-			Die ();
-		}else if (animate) {
-			playerMovement.canMove = false;
-			backTimeCount = backTime;
+			if (live <= 0f) {
+				Die ();
+			} else if (animate) {
+				playerMovement.canMove = false;
+				backTimeCount = backTime;
+			}
+			BluetoothReceiver.getInstance ().viber (vt);
 		}
-	
-		/*
-		Debug.Log ("back: " + back);
-		playerRigidbody.MovePosition ( transform.position + back);*/
-
-		BluetoothReceiver.getInstance ().viber (vt);
 	}
 
 	private void Die(){
@@ -115,5 +135,30 @@ public class PlayerHealth : MonoBehaviour {
 		if (gameObject.name == "Eff_Fire") {
 			Poison ();
 		}
+	}
+
+	public bool HaveShield(){
+		return haveShield==2;
+	}
+
+	public bool IsUsingShield(){
+		return haveShield==1;
+	}
+
+	public bool CanPickShield(){
+		return haveShield == 0;
+	}
+
+	public void PickShield(){
+		haveShield = 2;
+	}
+
+	public void UseShield(){
+		shieldTime = shieldDuration;
+		haveShield = 1;
+	}
+
+	public void RemoveShield(){
+		haveShield = 0;
 	}
 }
