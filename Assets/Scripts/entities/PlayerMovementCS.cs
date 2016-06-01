@@ -16,6 +16,8 @@ public class PlayerMovementCS : MonoBehaviour{
 	public float speed = 6f;
 	public float RotateSpeed = 300f;
 	public float runTime = 20f;
+	public float divPoisoned=2f;
+
 
 	public Slider runSlider;
 
@@ -31,6 +33,7 @@ public class PlayerMovementCS : MonoBehaviour{
 	private bool run=false;
 	public bool canMove=true;
 	private PlayerAudio playerAudio;
+	private PlayerHealth playerHealth;
 
 
 
@@ -40,6 +43,7 @@ public class PlayerMovementCS : MonoBehaviour{
 		playerRigidbody = GetComponent<Rigidbody> ();
 		runCounter = runTime;
 		playerAudio = GetComponent<PlayerAudio> ();
+		playerHealth = GetComponent<PlayerHealth> ();
 	}
 
 	void FixedUpdate(){
@@ -68,6 +72,10 @@ public class PlayerMovementCS : MonoBehaviour{
 			} else {
 				run = false;
 				playerAudio.Walk ();
+			}
+
+			if (playerHealth.IsPoisoned ()) {
+				realSpeed /= divPoisoned;
 			}
 
 			movement = movement.normalized * realSpeed * Time.deltaTime;

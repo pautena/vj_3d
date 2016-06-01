@@ -6,11 +6,13 @@ public class PlayerScore : MonoBehaviour {
 	public int startScore = 0;
 	public Text scoreText;
 
+	private PlayerAudio audioPlayer;
 	private int score;
 
 	// Use this for initialization
 	void Start () {
 		score = startScore;
+		audioPlayer = GetComponent<PlayerAudio> ();
 	}
 	
 	// Update is called once per frame
@@ -19,7 +21,13 @@ public class PlayerScore : MonoBehaviour {
 	}
 
 	public void IncScore(int inc){
+		IncScore (inc, true);
+	}
+
+	public void IncScore (int inc, bool playSound){
 		score += inc;
+		if (playSound)
+			audioPlayer.IncScore ();
 	}
 
 	public void DecScore(int dec){

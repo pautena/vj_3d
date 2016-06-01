@@ -4,9 +4,11 @@ using System.Collections;
 public abstract class PlayerCollisionScriptCS : MonoBehaviour {
 
 	protected GameObject player;
+	private bool isPicked;
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
+		isPicked = false;
 		if (player == null) {
 			player=GameObject.Find ("player");
 		}
@@ -19,7 +21,8 @@ public abstract class PlayerCollisionScriptCS : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col){
-		if (col.gameObject.tag == "Player"){
+		if (col.gameObject.tag == "Player" && !isPicked){
+			isPicked = true;
 			OnPlayerCollision ();
 		}
 	}

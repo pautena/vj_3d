@@ -2,13 +2,14 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class ShieldScriptCS : MonoBehaviour {
+public class ShieldScriptCS : PlayerCollisionScriptCS {
 	public float speedRotation=200f;
 	public GameObject shieldTexture;
 	private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
+		base.Start ();
 		audioSource = GetComponent<AudioSource> ();
 	}
 	
@@ -17,23 +18,20 @@ public class ShieldScriptCS : MonoBehaviour {
 		transform.Rotate(0, Time.deltaTime*speedRotation, 0 );
 	}
 
-	void OnTriggerEnter(Collider col){
-		if (col.tag == "Player") {
-			PlayerHealth playerHealth = col.gameObject.GetComponent<PlayerHealth> ();
-			if (playerHealth.CanPickShield ()) {
-				audioSource.Play ();
+	public override void OnPlayerCollision(){
+		PlayerHealth playerHealth = player.GetComponent<PlayerHealth> ();
+		if (playerHealth.CanPickShield ()) {
+			audioSource.Play ();
 
-				Renderer[] renderers = GetComponentsInChildren<Renderer> ();
-				for (int i = 0; i < renderers.Length; ++i) {
-					renderers [i].enabled = false;
-				}
-
-				Destroy (gameObject,audioSource.clip.length);
-				Destroy (shieldTexture);
-				GameObject.Find ("ShieldImage").GetComponent<Image> ().color = Color.white;
-				playerHealth.PickShield ();
+			Renderer[] renderers = GetComponentsInChildren<Renderer> ();
+			for (int i = 0; i < renderers.Length; ++i) {
+				renderers [i].enabled = false;
 			}
 
+			Destroy (gameObject,audioSource.clip.length);
+			Destroy (shieldTexture);
+			GameObject.Find ("ShieldImage").GetComponent<Image> ().color = Color.white;
+			playerHealth.PickShield ();
 		}
 	}
 }

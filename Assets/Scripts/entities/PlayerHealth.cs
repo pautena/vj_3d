@@ -90,6 +90,8 @@ public class PlayerHealth : MonoBehaviour {
 				Invoke ("PoisonDamage", poisonDamageTime);
 				poisonInvoke = true;
 			}
+		}else{
+			playerAudio.StopPoison ();
 		}
 	}
 
@@ -119,7 +121,6 @@ public class PlayerHealth : MonoBehaviour {
 				}
 			}
 			BluetoothReceiver.getInstance ().viber (vt);
-
 		}
 	}
 
@@ -130,14 +131,21 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	private void PoisonDamage(){
-		TakeDamage (poisonDamage, poisonViberTime,false);		
-		poisonInvoke = false;
+		if (poisonAlpha > 0) {
+			TakeDamage (poisonDamage, poisonViberTime, false);		
+			poisonInvoke = false;
+		}
 	}
 
 	public void Poison(){
 		if (poisonAlpha <= 0f) {
+			playerAudio.StartPoison ();
 			poisonAlpha = 1f;
 		}
+	}
+
+	public bool IsPoisoned(){
+		return poisonAlpha > 0f;
 	}
 
 	public void OnParticleCollision(GameObject gameObject){
@@ -163,11 +171,13 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	public void UseShield(){
+		playerAudio.ActiveShield ();
 		shieldTime = shieldDuration;
 		haveShield = 1;
 	}
 
 	public void RemoveShield(){
+		playerAudio.DisableShield (poisonAlpha);
 		haveShield = 0;
 	}
 }

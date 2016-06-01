@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour {
+	public Text textTitle;
 	public Text textPoints;
 	public float gameOverWaitTime=5f;
 	public Transform player;
@@ -20,7 +21,7 @@ public class GameOverManager : MonoBehaviour {
 		if (!gameOver) {
 			gameOver = true;
 			player.position = new Vector3 (1000f, 1000f, 1000f);
-			Debug.Log ("GameOver");
+			textTitle.text = "Game Over";
 			textPoints.text = "Puntuació: " + points;
 			animator.SetTrigger ("GameOver");
 			BluetoothReceiver.getInstance ().Disconnect ();
