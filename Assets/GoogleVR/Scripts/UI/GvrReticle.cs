@@ -105,7 +105,7 @@ public class GvrReticle : MonoBehaviour, IGvrGazePointer {
   public void OnGazeStay(Camera camera, GameObject targetObject, Vector3 intersectionPosition,
                          bool isInteractive) {
     SetGazeTarget(intersectionPosition, isInteractive);
-	if (targetObject.tag == "UIButton" && BluetoothReceiver.getInstance().getBtn1Pressed()) {
+		if (targetObject.tag == "UIButton" && BluetoothReceiver.getInstance().GetBtn1Down()) {
 		if (targetObject.name == "Text" || targetObject.name == "Image")
 			targetObj = targetObject.transform.parent.gameObject;
 		else

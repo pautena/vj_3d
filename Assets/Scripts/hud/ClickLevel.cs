@@ -26,6 +26,7 @@ public class ClickLevel : OnClick {
 			fullScreenMessage.text = "Nivell 1";
 		}
 
+		BluetoothReceiver.getInstance ().Disconnect ();
 		float fadeTime = GameObject.Find ("EventManager").GetComponent<Fading> ().BeginFade (1);
 		yield return new WaitForSeconds (fadeTime);
 

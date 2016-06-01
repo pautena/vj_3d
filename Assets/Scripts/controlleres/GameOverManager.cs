@@ -23,6 +23,7 @@ public class GameOverManager : MonoBehaviour {
 			Debug.Log ("GameOver");
 			textPoints.text = "Puntuació: " + points;
 			animator.SetTrigger ("GameOver");
+			BluetoothReceiver.getInstance ().Disconnect ();
 			Invoke ("GoToStartScreen", gameOverWaitTime);
 		}
 	}

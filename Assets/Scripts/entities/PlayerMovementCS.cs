@@ -60,7 +60,7 @@ public class PlayerMovementCS : MonoBehaviour{
 			float realSpeed = speed;
 
 			//Run script
-			if (BluetoothReceiver.getInstance ().getBtn1Pressed () && runCounter > 0) {
+			if (BluetoothReceiver.getInstance ().GetBtn1 () && runCounter > 0) {
 				runCounter -= Time.deltaTime * runDecreaseVelocity;
 				realSpeed += incVelocity;
 				run = true;

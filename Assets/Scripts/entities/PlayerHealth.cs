@@ -52,7 +52,7 @@ public class PlayerHealth : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (HaveShield() && BluetoothReceiver.getInstance ().getBtn2Pressed ()) {
+		if (HaveShield() && BluetoothReceiver.getInstance ().GetBtn2Down ()) {
 			UseShield ();
 		}
 
