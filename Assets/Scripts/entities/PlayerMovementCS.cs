@@ -49,7 +49,7 @@ public class PlayerMovementCS : MonoBehaviour{
 		playerHealth = GetComponent<PlayerHealth> ();
 	}
 
-	void FixedUpdate(){
+	void Update(){
 		float v = BluetoothReceiver.getInstance().getYAxis();
 		float h = BluetoothReceiver.getInstance().getXAxis();
 	
@@ -72,6 +72,8 @@ public class PlayerMovementCS : MonoBehaviour{
 	}
 
 	void Move(float h,float v){
+		Debug.Log ("v"+v);
+		Debug.Log ("h"+h);
 		if (canMove && (v != 0 || h != 0)) {
 			playerAudio.PlayWalk ();
 			
