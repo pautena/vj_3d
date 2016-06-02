@@ -43,7 +43,10 @@ public class EnemyMovementCS : MonoBehaviour {
 
 	private bool delete;
 
+	private AudioSource audioDie;
+
 	void Start () {
+		audioDie = GetComponent<AudioSource> ();
 		playerHealth = GameObject.Find ("player").GetComponent<PlayerHealth> ();
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		target = player.transform;
@@ -250,7 +253,14 @@ public class EnemyMovementCS : MonoBehaviour {
 	void OnTriggerEnter (Collider col){
 		if (col.gameObject.tag == "Player"){
 			if (!playerHealth.IsUsingShield()) playerHealth.TakeDamage(damage);
-			SendMessage("deleteDetector");
+
+
+			Renderer[] renderers = GetComponentsInChildren<Renderer> ();
+			for (int i = 0; i < renderers.Length; ++i) {
+				renderers [i].enabled = false;
+			}
+			audioDie.Play ();
+			Invoke ("deleteDetector", audioDie.clip.length);
 			GameObject.Find("LevelGenerator").SendMessage("respawnEnemy");
 		}
 	}

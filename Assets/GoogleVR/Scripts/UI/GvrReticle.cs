@@ -110,7 +110,13 @@ public class GvrReticle : MonoBehaviour, IGvrGazePointer {
 			targetObj = targetObject.transform.parent.gameObject;
 		else
 			targetObj = targetObject;
-		targetObj.GetComponent<OnClick>().OnClickFunc();
+
+		OnClick onClick = targetObj.GetComponent<OnClick> ();
+		if (onClick != null) {
+			onClick.OnClickFunc ();
+		} else {
+				targetObj.GetComponent<Exitbutton> ().OnClickFunc ();
+		}
 	}
   }
 

@@ -28,10 +28,11 @@ public class ShieldScriptCS : PlayerCollisionScriptCS {
 				renderers [i].enabled = false;
 			}
 
-			Destroy (gameObject,audioSource.clip.length);
+			Destroy (gameObject, audioSource.clip.length);
 			Destroy (shieldTexture);
 			GameObject.Find ("ShieldImage").GetComponent<Image> ().color = Color.white;
 			playerHealth.PickShield ();
-		}
+		} else
+			isPicked = false;
 	}
 }
