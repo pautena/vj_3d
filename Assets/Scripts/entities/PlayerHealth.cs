@@ -82,8 +82,6 @@ public class PlayerHealth : MonoBehaviour {
 		}
 		damaged = false;
 
-
-		Debug.Log ("poisonAlpha: " + poisonAlpha);
 		if (poisonAlpha > 0f) {
 			poisonImage.color = new Color (poisonImage.color.r, poisonImage.color.g, poisonImage.color.b, poisonAlpha);
 			poisonAlpha -= poisonSpeed * Time.deltaTime;

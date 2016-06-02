@@ -61,9 +61,14 @@ public class BluetoothReceiver : MonoBehaviour {
 			bool isConnected = jo.Call<bool> ("isConnected");
 			Debug.Log ("isConnected: " + isConnected);
 			if (!isConnected) {
-				Invoke ("Connect", reconnectDelay);
+				StartCoroutine (Reconnect ());
 			}
 		}
+	}
+
+	private IEnumerator Reconnect(){
+		yield return new WaitForSeconds(reconnectDelay);
+		Connect();
 	}
 
 	public void SetButtonDown(bool a1, bool a2, bool a3, bool a4, bool aj){
