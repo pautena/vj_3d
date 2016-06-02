@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedRotation: 200
-  heartTexture: {fileID: 116172, guid: bf5e6b44d7aeb6d4693c0d5a843d5303, type: 2}
+  heartTexture: {fileID: 121182}
   healthValue: 20
 --- !u!212 &21206040
 SpriteRenderer:

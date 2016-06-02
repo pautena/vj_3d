@@ -12,7 +12,7 @@ public class EnemyMovementCS : MonoBehaviour {
 	public static int N;
 	public static bool doorsOpen;
 
-	float speed;
+	public float speed;
 	private Image enemyDetector;
 	private Canvas interfacePlayer;
 
@@ -38,10 +38,13 @@ public class EnemyMovementCS : MonoBehaviour {
 	private bool walking;
 	private bool attacking;
 	private Animator anim;
+	private PlayerHealth playerHealth;
+	public float damage = 20;
 
 	private bool delete;
 
 	void Start () {
+		playerHealth = GameObject.Find ("player").GetComponent<PlayerHealth> ();
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		target = player.transform;
 
@@ -122,7 +125,7 @@ public class EnemyMovementCS : MonoBehaviour {
 		float xRot = imageRectTransform.eulerAngles.x;
 		float yRot = imageRectTransform.eulerAngles.y;
 		imageRectTransform.LookAt(transform);
-		imageRectTransform.eulerAngles.Set(xRot,yRot,-imageRectTransform.localEulerAngles.y);
+		imageRectTransform.localRotation = Quaternion.Euler (0, 0, -imageRectTransform.localEulerAngles.y);
 
 		if (Vector3.Distance(target.position, transform.position) < nearDistance){
 			ownEnemyDetector.color = new Color(1.0f,0.0f,0.0f,1-Vector3.Distance(target.position, transform.position)/nearDistance);
@@ -242,5 +245,13 @@ public class EnemyMovementCS : MonoBehaviour {
 	void deleteDetector(){
 		Destroy(ownEnemyDetector);
 		Destroy(gameObject);
+	}
+
+	void OnTriggerEnter (Collider col){
+		if (col.gameObject.tag == "Player"){
+			if (!playerHealth.IsUsingShield()) playerHealth.TakeDamage(damage);
+			SendMessage("deleteDetector");
+			GameObject.Find("LevelGenerator").SendMessage("respawnEnemy");
+		}
 	}
 }

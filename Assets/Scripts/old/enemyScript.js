@@ -2,7 +2,7 @@
 
 function OnTriggerEnter (col : Collider){
 	if (col.gameObject.tag == "Player"){
-		GameObject.Find("Player_Old").SendMessage("hitEnemy");
+		GameObject.FindWithTag("Player").SendMessage("hitEnemy");
 		SendMessage("deleteDetector");
 		GameObject.Find("LevelGenerator").SendMessage("respawnEnemy");
 	}

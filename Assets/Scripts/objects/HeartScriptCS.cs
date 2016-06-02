@@ -29,6 +29,6 @@ public class HeartScriptCS : PlayerCollisionScriptCS {
 			renderers [i].enabled = false;
 		}
 		Destroy (gameObject,audioSource.clip.length);
-		DestroyImmediate (heartTexture);
+		Destroy (heartTexture);
 	}
 }
