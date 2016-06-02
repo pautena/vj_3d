@@ -61,24 +61,12 @@ public class PlayerMovementCS : MonoBehaviour{
 		return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
 	}
 
-	public float GetYLookRotation(){
-		if (BluetoothReceiver.getInstance ().isAndroidActive ()) {
-			return head.eulerAngles.y;
-		} else {
-			return transform.eulerAngles.y;
-		}
-
-
-	}
-
 	void Move(float h,float v){
-		Debug.Log ("v"+v);
-		Debug.Log ("h"+h);
 		if (canMove && (v != 0 || h != 0)) {
 			playerAudio.PlayWalk ();
 			
 			Vector3 forward = head.transform.forward;
-			Vector3 movement = Quaternion.AngleAxis (GetYLookRotation(), Vector3.up) * new Vector3 (h, 0f, v);
+			Vector3 movement = Quaternion.AngleAxis (head.eulerAngles.y, Vector3.up) * new Vector3 (h, 0f, v);
 
 			float realSpeed = speed;
 
