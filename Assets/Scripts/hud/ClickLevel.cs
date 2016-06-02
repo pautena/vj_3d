@@ -30,8 +30,16 @@ public class ClickLevel : OnClick {
 		float fadeTime = GameObject.Find ("EventManager").GetComponent<Fading> ().BeginFade (1);
 		yield return new WaitForSeconds (fadeTime);
 
-		if (level == 1) {
+		if (level == 1) {//Tutorial 1
+			SceneManager.LoadScene ("Tutorial1");
+		} else if (level == 2) {//Tutorial 2
+			SceneManager.LoadScene ("Tutorial2");
+		} else if (level == 3) {//Tutorial 3
+			SceneManager.LoadScene ("Tutorial3");
+		}else if (level == 4) {//facil
 			SceneManager.LoadScene ("Level1");
+		}else if (level == 5) {//dificil
+			SceneManager.LoadScene ("Level2");
 		}
 	}
 }

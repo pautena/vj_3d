@@ -26,6 +26,7 @@ public class PlayerMovementCS : MonoBehaviour{
 	private Rigidbody playerRigidbody;
 	public Transform head;
 	public Transform leftCamera;
+	public Transform mainCamera;
 	private int floorMask;
 	private float camRayLength=100f;
 	private float angle=0f;
@@ -34,6 +35,8 @@ public class PlayerMovementCS : MonoBehaviour{
 	public bool canMove=true;
 	private PlayerAudio playerAudio;
 	private PlayerHealth playerHealth;
+	private float lastAngle=0f;
+	private MouseLook m_MouseLook;
 
 
 
@@ -47,10 +50,6 @@ public class PlayerMovementCS : MonoBehaviour{
 	}
 
 	void FixedUpdate(){
-
-		if (!BluetoothReceiver.getInstance ().isAndroidActive ()) {
-			RotateHeadWithMouse ();
-		}
 		float v = BluetoothReceiver.getInstance().getYAxis();
 		float h = BluetoothReceiver.getInstance().getXAxis();
 	
@@ -58,22 +57,18 @@ public class PlayerMovementCS : MonoBehaviour{
 		Animating(h,v);
 	}
 
-	private void RotateHeadWithMouse(){
-		//Get the Screen positions of the object
-		Vector2 positionOnScreen = Camera.main.WorldToViewportPoint (transform.position);
-
-		//Get the Screen position of the mouse
-		Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
-		//Get the angle between the points
-		float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
-
-		//Ta Daaa
-		head.rotation =  Quaternion.Euler (new Vector3(0f,angle,0f));
+	float AngleBetweenPoints(Vector3 a, Vector3 b) {
+		return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
 	}
 
-	float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {
-		return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+	public float GetYLookRotation(){
+		if (BluetoothReceiver.getInstance ().isAndroidActive ()) {
+			return head.eulerAngles.y;
+		} else {
+			return transform.eulerAngles.y;
+		}
+
+
 	}
 
 	void Move(float h,float v){
@@ -81,7 +76,7 @@ public class PlayerMovementCS : MonoBehaviour{
 			playerAudio.PlayWalk ();
 			
 			Vector3 forward = head.transform.forward;
-			Vector3 movement = Quaternion.AngleAxis (head.eulerAngles.y, Vector3.up) * new Vector3 (h, 0f, v);
+			Vector3 movement = Quaternion.AngleAxis (GetYLookRotation(), Vector3.up) * new Vector3 (h, 0f, v);
 
 			float realSpeed = speed;
 
