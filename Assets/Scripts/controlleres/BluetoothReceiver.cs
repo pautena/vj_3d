@@ -13,6 +13,7 @@ public class BluetoothReceiver : MonoBehaviour {
 	private bool downBtn1,downBtn2,downBtn3,downBtn4,downButtonJoystick;
 	private int xAxis,yAxis;
 	public int minToMove=150;
+	public float reconnectDelay=1f;
 
 	// Use this for initialization
 	void Start () {
@@ -27,10 +28,8 @@ public class BluetoothReceiver : MonoBehaviour {
 
 		jo = jc.CallStatic<AndroidJavaObject> ("initialize");
 		Debug.Log (helloWorld);
-		jo.Call ("connectHC06");
+		Connect ();
 
-		bool isConnected = jo.Call<bool> ("isConnected");
-		Debug.Log ("isConnected: " + isConnected);
 	}
 	
 	// Update is called once per frame
@@ -53,6 +52,18 @@ public class BluetoothReceiver : MonoBehaviour {
 			yAxis = jo.Call<int> ("getYJoystick");
 		}
 
+	}
+
+	public void Connect(){
+		if (isAndroidActive ()) {
+			jo.Call ("connectHC06");
+
+			bool isConnected = jo.Call<bool> ("isConnected");
+			Debug.Log ("isConnected: " + isConnected);
+			if (!isConnected) {
+				Invoke ("Connect", reconnectDelay);
+			}
+		}
 	}
 
 	public void SetButtonDown(bool a1, bool a2, bool a3, bool a4, bool aj){
