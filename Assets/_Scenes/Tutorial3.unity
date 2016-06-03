@@ -16844,19 +16844,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22412106, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22412106, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22466012, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22466012, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11451174, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
       propertyPath: player

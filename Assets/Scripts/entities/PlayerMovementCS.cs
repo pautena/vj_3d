@@ -49,7 +49,7 @@ public class PlayerMovementCS : MonoBehaviour{
 		playerHealth = GetComponent<PlayerHealth> ();
 	}
 
-	void Update(){
+	void LateUpdate(){
 		float v = BluetoothReceiver.getInstance().getYAxis();
 		float h = BluetoothReceiver.getInstance().getXAxis();
 	

@@ -1454,6 +1454,22 @@ MonoBehaviour:
   screenSize: 0
   viewerType: 1
   stereoScreenScale: 1
+--- !u!1 &420742913 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100008, guid: b8b03d395f5734e98af91ccf44f9bf47, type: 2}
+  m_PrefabInternal: {fileID: 420742910}
+--- !u!114 &420742914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 420742913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81993b26140ba446fa548e7280a85fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
 --- !u!1 &424719901
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,6 +2108,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  runSlider: {fileID: 0}
 --- !u!143 &574604358
 CharacterController:
   m_ObjectHideFlags: 0

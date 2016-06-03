@@ -15,7 +15,7 @@ public class NoVrMovemnet : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void LateUpdate () {
+	void Update () {
 		vrEnabled = BluetoothReceiver.getInstance ().isAndroidActive ();
 		Debug.Log ("vrEnabled: " + vrEnabled + " yValue: " + Input.GetAxis ("Mouse Y"));
 		if (!vrEnabled) {
