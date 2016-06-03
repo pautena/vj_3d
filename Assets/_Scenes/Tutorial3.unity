@@ -1058,6 +1058,14 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1107817318}
+    - target: {fileID: 11447770, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
+      propertyPath: vrModeEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447770, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
   m_IsPrefabParent: 0

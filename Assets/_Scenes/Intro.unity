@@ -5016,7 +5016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82143822c488947789a6d924bcfc4c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vrEnabled: 0
+  vrEnabled: 1
   leftArrow: {fileID: 1146967486}
   rightArrow: {fileID: 125275961}
   tabsCardboard:

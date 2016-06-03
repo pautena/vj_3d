@@ -3362,7 +3362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4658882760cbe436291ec935e8acb8cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialLive: 100
+  initialLive: 200000
   healthSlider: {fileID: 812650619}
   damageImage: {fileID: 1753804384}
   poisonImage: {fileID: 1617393193}
@@ -5408,9 +5408,9 @@ MonoBehaviour:
   trapScythe: {fileID: 191690, guid: ae26deac8f1b14a4dba87e6ae259f44f, type: 2}
   nEnemies: 1
   nShields: 2
-  probabilityToShield: 100
+  probabilityToShield: 25
   nTraps: 25
-  probabilityToTrap: 100
+  probabilityToTrap: 50
 --- !u!4 &1874217262
 Transform:
   m_ObjectHideFlags: 0
