@@ -10059,68 +10059,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1657189672}
   m_Mesh: {fileID: 987504431}
---- !u!1001 &1660982340
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 472412, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 472412, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.08999634
-      objectReference: {fileID: 0}
-    - target: {fileID: 472412, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 472412, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 472412, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 472412, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 472412, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 472412, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 22457864, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22457864, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22495268, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22495268, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11460236, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-      propertyPath: m_Text
-      value: Evita les trampes!
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1673575261
 GameObject:
   m_ObjectHideFlags: 0
@@ -11065,23 +11003,6 @@ Transform:
   - {fileID: 1719684878}
   m_Father: {fileID: 0}
   m_RootOrder: 8
---- !u!1 &1803052930 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 191610, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
-  m_PrefabInternal: {fileID: 1660982340}
---- !u!114 &1803052935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1803052930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7054055cb7784ab585ffe8ae5773e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minToMove: 150
-  reconnectDelay: 1
 --- !u!1 &1827537373
 GameObject:
   m_ObjectHideFlags: 0
@@ -12281,6 +12202,68 @@ Transform:
   - {fileID: 794412852}
   m_Father: {fileID: 1736788107}
   m_RootOrder: 5
+--- !u!1001 &1985150128
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 485130, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485130, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.08999634
+      objectReference: {fileID: 0}
+    - target: {fileID: 485130, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485130, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485130, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485130, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485130, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485130, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 22461948, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22461948, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22464168, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22464168, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11448702, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+      propertyPath: m_Text
+      value: Evita les trampes!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 1357926c4dd5e42f296e3ac5a9d1ece6, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1986715556
 GameObject:
   m_ObjectHideFlags: 0

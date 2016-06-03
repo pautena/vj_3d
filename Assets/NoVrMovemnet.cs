@@ -7,6 +7,7 @@ public class NoVrMovemnet : MonoBehaviour {
 	public float speed = 20f;
 
 	private float angle;
+	public Transform player;
 
 
 	// Use this for initialization
@@ -20,7 +21,8 @@ public class NoVrMovemnet : MonoBehaviour {
 		Debug.Log ("vrEnabled: " + vrEnabled + " yValue: " + Input.GetAxis ("Mouse Y"));
 		if (!vrEnabled) {
 			angle += Input.GetAxis ("Mouse X");
-			transform.eulerAngles = new Vector3(0f,angle*speed, 0f);
+			transform.position = player.position;
+			transform.rotation = Quaternion.Euler(new Vector3 (0f, angle * speed, 0f));
 		}
 	
 	}
