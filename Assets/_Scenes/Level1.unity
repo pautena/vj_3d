@@ -5435,10 +5435,10 @@ MonoBehaviour:
   trapNeedle: {fileID: 126752, guid: 93061a6792c126c40a16e90ff62fc0fe, type: 2}
   trapSmoke: {fileID: 114466, guid: 75e009a05af6e9d41b601eaea25ed8c1, type: 2}
   trapScythe: {fileID: 191690, guid: ae26deac8f1b14a4dba87e6ae259f44f, type: 2}
-  nEnemies: 1
-  nShields: 2
+  nEnemies: 0
+  nShields: 3
   probabilityToShield: 25
-  nTraps: 25
+  nTraps: 10
   probabilityToTrap: 50
 --- !u!4 &1874217262
 Transform:

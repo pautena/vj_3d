@@ -31,6 +31,7 @@ public class TutorialFinish : MonoBehaviour {
 		float fadeTime = GameObject.Find ("EventManager").GetComponent<Fading> ().BeginFade (1);
 		yield return new WaitForSeconds (fadeTime);
 
+
 		SceneManager.LoadScene ("Intro");
 	}
 }
