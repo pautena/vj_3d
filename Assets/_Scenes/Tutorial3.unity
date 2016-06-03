@@ -1052,7 +1052,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 410386, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11427072, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
       propertyPath: target
@@ -1060,13 +1060,18 @@ Prefab:
       objectReference: {fileID: 1107817318}
     - target: {fileID: 11447770, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
       propertyPath: vrModeEnabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11447770, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 109762, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11447770, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &132187324 stripped
@@ -11280,6 +11285,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1311215321}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1319780658 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 109762, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
+  m_PrefabInternal: {fileID: 132187323}
+--- !u!114 &1319780659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1319780658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a40b544b8c3553c40852ae7ad35a9343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vrModeEnabled: 0
+  distortionCorrection: 2
+  enableAlignmentMarker: 1
+  enableSettingsButton: 1
+  backButtonMode: 1
+  neckModelScale: 1
+  autoDriftCorrection: 1
+  electronicDisplayStabilization: 0
+  autoUntiltHead: 1
+  UseUnityRemoteInput: 0
+  screenSize: 0
+  viewerType: 1
+  stereoScreenScale: 1
 --- !u!1 &1326446017
 GameObject:
   m_ObjectHideFlags: 0
@@ -16811,19 +16844,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22412106, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22412106, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22466012, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22466012, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11451174, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
       propertyPath: player
@@ -16841,6 +16874,14 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1107817318}
+    - target: {fileID: 22307562, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447396, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
   m_IsPrefabParent: 0

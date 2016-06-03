@@ -12168,6 +12168,14 @@ Prefab:
       propertyPath: levelAudioSource
       value: 
       objectReference: {fileID: 1364373219}
+    - target: {fileID: 22307562, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447396, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61331ca075554bc4fb65a59e7a21e3e1, type: 2}
   m_IsPrefabParent: 0
@@ -18446,9 +18454,42 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1067719682}
-    m_RemovedComponents: []
+    - target: {fileID: 109762, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11447770, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2048451515 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 109762, guid: 0e13735b548ddad408475ac026df82f4, type: 2}
+  m_PrefabInternal: {fileID: 2048451514}
+--- !u!114 &2048451516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2048451515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a40b544b8c3553c40852ae7ad35a9343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vrModeEnabled: 0
+  distortionCorrection: 2
+  enableAlignmentMarker: 1
+  enableSettingsButton: 1
+  backButtonMode: 1
+  neckModelScale: 1
+  autoDriftCorrection: 1
+  electronicDisplayStabilization: 0
+  autoUntiltHead: 1
+  UseUnityRemoteInput: 0
+  screenSize: 0
+  viewerType: 1
+  stereoScreenScale: 1
 --- !u!43 &2069365399
 Mesh:
   m_ObjectHideFlags: 0
